@@ -127,8 +127,8 @@ export function ClaudeSubscriptionPanel({
 
               <div className="mt-3 h-2 overflow-hidden bg-muted">
                 <div
-                  className={cn("h-full transition-[width] duration-200", fillClass(window.usedPercent))}
-                  style={{ width: `${width}%` }}
+                  className={cn("h-full origin-left transition-[transform] duration-200", fillClass(window.usedPercent))}
+                  style={{ width: "100%", transform: `scaleX(${width / 100})` }}
                 />
               </div>
             </div>

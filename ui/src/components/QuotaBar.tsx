@@ -47,10 +47,10 @@ export function QuotaBar({
         {/* fill */}
         <div
           className={cn(
-            "absolute inset-y-0 left-0 transition-[width,background-color] duration-150",
+            "absolute inset-y-0 left-0 origin-left transition-[transform,background-color] duration-150",
             fillColor(clampedPct),
           )}
-          style={{ width: `${clampedPct}%` }}
+          style={{ width: "100%", transform: `scaleX(${clampedPct / 100})` }}
         />
         {/* deficit notch — 2px wide, sits at the fill tip */}
         {showDeficitNotch && clampedPct > 0 && (

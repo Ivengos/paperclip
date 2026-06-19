@@ -205,8 +205,8 @@ export function ProviderQuotaCard({
                       </div>
                       <div className="h-2 w-full border border-border overflow-hidden">
                         <div
-                          className="h-full bg-primary/60 transition-[width] duration-150"
-                          style={{ width: `${barPct}%` }}
+                          className="h-full origin-left bg-primary/60 transition-[transform] duration-150"
+                          style={{ width: "100%", transform: `scaleX(${barPct / 100})` }}
                         />
                       </div>
                     </div>
@@ -242,8 +242,8 @@ export function ProviderQuotaCard({
                 <>
                   <div className="h-1.5 w-full border border-border overflow-hidden">
                     <div
-                      className="h-full bg-primary/60 transition-[width] duration-150"
-                      style={{ width: `${subSharePct}%` }}
+                      className="h-full origin-left bg-primary/60 transition-[transform] duration-150"
+                      style={{ width: "100%", transform: `scaleX(${subSharePct / 100})` }}
                     />
                   </div>
                   <p className="text-xs text-muted-foreground">
@@ -286,14 +286,14 @@ export function ProviderQuotaCard({
                     {/* token share bar */}
                     <div className="relative h-2 w-full border border-border overflow-hidden">
                       <div
-                        className="absolute inset-y-0 left-0 bg-primary/60 transition-[width] duration-150"
-                        style={{ width: `${tokenPct}%` }}
+                        className="absolute inset-y-0 left-0 origin-left bg-primary/60 transition-[transform] duration-150"
+                        style={{ width: "100%", transform: `scaleX(${tokenPct / 100})` }}
                         title={`${Math.round(tokenPct)}% of provider tokens`}
                       />
                       {/* cost share overlay — narrower, opaque, shows relative cost weight */}
                       <div
-                        className="absolute inset-y-0 left-0 bg-primary/85 transition-[width] duration-150"
-                        style={{ width: `${costPct}%` }}
+                        className="absolute inset-y-0 left-0 origin-left bg-primary/85 transition-[transform] duration-150"
+                        style={{ width: "100%", transform: `scaleX(${costPct / 100})` }}
                         title={`${Math.round(costPct)}% of provider cost`}
                       />
                     </div>
@@ -356,8 +356,8 @@ export function ProviderQuotaCard({
                           {qw.usedPercent != null && fillColor != null && (
                             <div className="h-2 w-full border border-border overflow-hidden">
                               <div
-                                className={`h-full transition-[width] duration-150 ${fillColor}`}
-                                style={{ width: `${qw.usedPercent}%` }}
+                                className={`h-full origin-left transition-[transform] duration-150 ${fillColor}`}
+                                style={{ width: "100%", transform: `scaleX(${qw.usedPercent / 100})` }}
                               />
                             </div>
                           )}

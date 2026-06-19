@@ -686,14 +686,14 @@ export function Costs() {
                         <div className="h-2 overflow-hidden bg-muted">
                           <div
                             className={cn(
-                              "h-full transition-[width,background-color] duration-150",
+                              "h-full origin-left transition-[transform,background-color] duration-150",
                               spendData.summary.utilizationPercent > 90
                                 ? "bg-red-400"
                                 : spendData.summary.utilizationPercent > 70
                                   ? "bg-yellow-400"
                                   : "bg-emerald-400",
                             )}
-                            style={{ width: `${Math.min(100, spendData.summary.utilizationPercent)}%` }}
+                            style={{ width: "100%", transform: `scaleX(${Math.min(100, spendData.summary.utilizationPercent) / 100})` }}
                           />
                         </div>
                         <div className="text-xs text-muted-foreground">

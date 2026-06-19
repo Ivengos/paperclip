@@ -1299,8 +1299,8 @@ export function DesignGuide() {
               </div>
               <div className="w-full h-2 bg-muted rounded-full overflow-hidden">
                 <div
-                  className={`h-full rounded-full transition-[width,background-color] duration-150 ${color}`}
-                  style={{ width: `${pct}%` }}
+                  className={`h-full origin-left rounded-full transition-[transform,background-color] duration-150 ${color}`}
+                  style={{ width: "100%", transform: `scaleX(${pct / 100})` }}
                 />
               </div>
             </div>

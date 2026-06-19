@@ -102,14 +102,14 @@ export function BudgetPolicyCard({
       <div className={cn("h-2 overflow-hidden rounded-full", isPlain ? "bg-border/70" : "bg-muted/70")}>
         <div
           className={cn(
-            "h-full rounded-full transition-[width,background-color] duration-200",
+            "h-full origin-left rounded-full transition-[transform,background-color] duration-200",
             summary.status === "hard_stop"
               ? "bg-red-400"
               : summary.status === "warning"
                 ? "bg-amber-300"
                 : "bg-emerald-300",
           )}
-          style={{ width: `${progress}%` }}
+          style={{ width: "100%", transform: `scaleX(${progress / 100})` }}
         />
       </div>
     </div>

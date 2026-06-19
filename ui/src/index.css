@@ -514,8 +514,8 @@
 }
 
 @keyframes agent-cap-rise {
-  0% { height: 0; }
-  100% { height: 100%; }
+  0% { transform: scaleY(0); }
+  100% { transform: scaleY(1); }
 }
 
 @keyframes agent-cap-online-pulse {
@@ -534,6 +534,7 @@
 }
 
 .agent-cap-liquid {
+  transform-origin: bottom;
   animation: agent-cap-rise 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
@@ -575,7 +576,7 @@
   }
   .agent-cap-liquid {
     animation: none;
-    height: 100%;
+    transform: scaleY(1);
   }
 }
 

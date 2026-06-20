@@ -221,10 +221,10 @@ describe("ChatComposer", () => {
     });
     const box = container.querySelector('[data-testid="chat-composer"]')!;
     expect(box.getAttribute("data-surface")).toBe("translucent");
-    // Glass recipe — mirrors the task-comments composer shell.
+    // Quieter surface — solid semi-transparent background, no glassmorphism.
     expect(box.className).toContain("bg-background/95");
-    expect(box.className).toContain("supports-[backdrop-filter]:bg-background/85");
-    expect(box.className).toContain("backdrop-blur");
+    expect(box.className).not.toContain("supports-[backdrop-filter]:bg-background/85");
+    expect(box.className).not.toContain("backdrop-blur");
     expect(box.className).toContain("shadow-[0_-12px_28px_rgba(15,23,42,0.08)]");
     expect(box.className).toContain("dark:shadow-[0_-12px_28px_rgba(0,0,0,0.28)]");
     expect(box.className).not.toContain("bg-card");

@@ -26,14 +26,14 @@ const STANDARD_CLASSES = {
 
 const ASK_CLASSES = {
   chip: "border-sky-500/60 bg-sky-500/15 text-sky-800 hover:bg-sky-500/25 dark:border-sky-500/50 dark:bg-sky-500/15 dark:text-sky-200 dark:hover:bg-sky-500/25",
-  container: "border-sky-500/60 bg-sky-50/60 supports-[backdrop-filter]:bg-sky-50/40 dark:border-sky-500/50 dark:bg-sky-500/[0.07] dark:supports-[backdrop-filter]:bg-sky-500/[0.07]",
+  container: "border-sky-500/60 bg-sky-50/60 dark:border-sky-500/50 dark:bg-sky-500/[0.07]",
   menuItem: "text-sky-700 dark:text-sky-300",
   badge: "border-sky-500/40 bg-sky-50 text-sky-700 dark:border-sky-500/40 dark:bg-sky-500/10 dark:text-sky-200",
 };
 
 const PLANNING_CLASSES = {
   chip: "border-amber-500/60 bg-amber-500/15 text-amber-800 hover:bg-amber-500/25 dark:border-amber-500/50 dark:bg-amber-500/15 dark:text-amber-200 dark:hover:bg-amber-500/25",
-  container: "border-amber-500/60 bg-amber-50/60 supports-[backdrop-filter]:bg-amber-50/40 dark:border-amber-500/50 dark:bg-amber-500/[0.07] dark:supports-[backdrop-filter]:bg-amber-500/[0.07]",
+  container: "border-amber-500/60 bg-amber-50/60 dark:border-amber-500/50 dark:bg-amber-500/[0.07]",
   menuItem: "text-amber-700 dark:text-amber-300",
   badge: "border-amber-500/40 bg-amber-500/10 text-amber-700 dark:text-amber-300",
 };

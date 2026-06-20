@@ -90,7 +90,7 @@ export function StandaloneBrowserControls({ mobile }: { mobile: boolean }) {
   if (!mobile || !chromeless) return null;
 
   return (
-    <div className="flex h-10 items-center justify-end gap-1 border-b border-border bg-background/95 px-3 backdrop-blur supports-[backdrop-filter]:bg-background/85">
+    <div className="flex h-10 items-center justify-end gap-1 border-b border-border bg-background/95 px-3">
       <ControlButton label="Refresh" onClick={refresh}>
         <RefreshCw className="h-4 w-4" />
       </ControlButton>

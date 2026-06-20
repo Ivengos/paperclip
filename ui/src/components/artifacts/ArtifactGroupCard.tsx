@@ -56,7 +56,7 @@ export function ArtifactGroupCard({ group, to }: ArtifactGroupCardProps) {
               <Layers className="h-7 w-7" aria-hidden="true" />
             </div>
           )}
-          <span className="absolute right-2 top-2 inline-flex items-center gap-1 rounded-full bg-background/85 px-2 py-0.5 text-[11px] font-medium text-foreground/90 shadow-sm backdrop-blur">
+          <span className="absolute right-2 top-2 inline-flex items-center gap-1 rounded-full bg-background px-2 py-0.5 text-[11px] font-medium text-foreground/90 shadow-sm">
             <Layers className="h-3 w-3" aria-hidden="true" />
             {group.count}
           </span>

@@ -94,6 +94,13 @@
   --paperclip-doc-annotation-highlight-stale: #fef08a;
   --paperclip-doc-annotation-highlight-resolved: #fef9c3;
 
+  /* Residual status/utility tokens — migrated from hard-coded hex in components
+     so colours are addressable in one place and theme-aware. */
+  --paperclip-activity-muted: #959596;
+  --paperclip-onboarding-art-bg: #1d1d1d;
+  --paperclip-project-fallback: #64748b;
+  --paperclip-project-accent-fallback: #6366f1;
+
   /* Brand agent-capsule gradient stops (paperclip.ing/brand/).
      "The capsule is the agent" — each agent gets a 2-stop gradient,
      --agent-Na (top) → --agent-Nb (bottom). Brand-fixed hex, identical

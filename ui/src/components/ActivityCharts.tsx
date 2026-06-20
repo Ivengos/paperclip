@@ -1,4 +1,5 @@
 import type { DashboardRunActivityDay, HeartbeatRun } from "@paperclipai/shared";
+import { cn } from "../lib/utils";
 
 /* ---- Utilities ---- */
 
@@ -31,12 +32,12 @@ function DateLabels({ days }: { days: string[] }) {
   );
 }
 
-function ChartLegend({ items }: { items: { color: string; label: string }[] }) {
+function ChartLegend({ items }: { items: { colorClass: string; label: string }[] }) {
   return (
     <div className="flex flex-wrap gap-x-2.5 gap-y-0.5 mt-2">
       {items.map(item => (
         <span key={item.label} className="flex items-center gap-1 text-[9px] text-muted-foreground">
-          <span className="h-1.5 w-1.5 rounded-full shrink-0" style={{ backgroundColor: item.color }} />
+          <span className={cn("h-1.5 w-1.5 rounded-full shrink-0", item.colorClass)} />
           {item.label}
         </span>
       ))}
@@ -121,11 +122,11 @@ export function RunActivityChart(props: RunChartProps) {
   );
 }
 
-const priorityColors: Record<string, string> = {
-  critical: "#ef4444",
-  high: "#f97316",
-  medium: "#eab308",
-  low: "#6b7280",
+const priorityColorClasses: Record<string, string> = {
+  critical: "bg-red-500",
+  high: "bg-orange-500",
+  medium: "bg-yellow-500",
+  low: "bg-gray-500",
 };
 
 const priorityOrder = ["critical", "high", "medium", "low"] as const;
@@ -158,7 +159,7 @@ export function PriorityChart({ issues }: { issues: { priority: string; createdA
               {total > 0 ? (
                 <div className="flex flex-col-reverse gap-px overflow-hidden" style={{ height: `${heightPct}%`, minHeight: 2 }}>
                   {priorityOrder.map(p => entry[p] > 0 ? (
-                    <div key={p} style={{ flex: entry[p], backgroundColor: priorityColors[p] }} />
+                    <div key={p} className={priorityColorClasses[p]} style={{ flex: entry[p] }} />
                   ) : null)}
                 </div>
               ) : (
@@ -169,19 +170,19 @@ export function PriorityChart({ issues }: { issues: { priority: string; createdA
         })}
       </div>
       <DateLabels days={days} />
-      <ChartLegend items={priorityOrder.map(p => ({ color: priorityColors[p], label: p.charAt(0).toUpperCase() + p.slice(1) }))} />
+      <ChartLegend items={priorityOrder.map(p => ({ colorClass: priorityColorClasses[p], label: p.charAt(0).toUpperCase() + p.slice(1) }))} />
     </div>
   );
 }
 
-const statusColors: Record<string, string> = {
-  todo: "#3b82f6",
-  in_progress: "#8b5cf6",
-  in_review: "#a855f7",
-  done: "#10b981",
-  blocked: "#ef4444",
-  cancelled: "#6b7280",
-  backlog: "#64748b",
+const statusColorClasses: Record<string, string> = {
+  todo: "bg-blue-500",
+  in_progress: "bg-violet-500",
+  in_review: "bg-purple-500",
+  done: "bg-emerald-500",
+  blocked: "bg-red-500",
+  cancelled: "bg-gray-500",
+  backlog: "bg-slate-500",
 };
 
 const statusLabels: Record<string, string> = {
@@ -225,7 +226,7 @@ export function IssueStatusChart({ issues }: { issues: { status: string; created
               {total > 0 ? (
                 <div className="flex flex-col-reverse gap-px overflow-hidden" style={{ height: `${heightPct}%`, minHeight: 2 }}>
                   {statusOrder.map(s => (entry[s] ?? 0) > 0 ? (
-                    <div key={s} style={{ flex: entry[s], backgroundColor: statusColors[s] ?? "#6b7280" }} />
+                    <div key={s} className={statusColorClasses[s] ?? "bg-gray-500"} style={{ flex: entry[s] }} />
                   ) : null)}
                 </div>
               ) : (
@@ -236,7 +237,7 @@ export function IssueStatusChart({ issues }: { issues: { status: string; created
         })}
       </div>
       <DateLabels days={days} />
-      <ChartLegend items={statusOrder.map(s => ({ color: statusColors[s] ?? "#6b7280", label: statusLabels[s] ?? s }))} />
+      <ChartLegend items={statusOrder.map(s => ({ colorClass: statusColorClasses[s] ?? "bg-gray-500", label: statusLabels[s] ?? s }))} />
     </div>
   );
 }
@@ -255,11 +256,11 @@ export function SuccessRateChart(props: RunChartProps) {
         {days.map(day => {
           const entry = grouped.get(day) ?? { date: day, succeeded: 0, failed: 0, other: 0, total: 0 };
           const rate = entry.total > 0 ? entry.succeeded / entry.total : 0;
-          const color = entry.total === 0 ? undefined : rate >= 0.8 ? "#10b981" : rate >= 0.5 ? "#eab308" : "#ef4444";
+          const colorClass = entry.total === 0 ? undefined : rate >= 0.8 ? "bg-emerald-500" : rate >= 0.5 ? "bg-yellow-500" : "bg-red-500";
           return (
             <div key={day} className="flex-1 h-full flex flex-col justify-end" title={`${day}: ${entry.total > 0 ? Math.round(rate * 100) : 0}% (${entry.succeeded}/${entry.total})`}>
               {entry.total > 0 ? (
-                <div style={{ height: `${rate * 100}%`, minHeight: 2, backgroundColor: color }} />
+                <div className={colorClass} style={{ height: `${rate * 100}%`, minHeight: 2 }} />
               ) : (
                 <div className="bg-muted/30 rounded-sm" style={{ height: 2 }} />
               )}

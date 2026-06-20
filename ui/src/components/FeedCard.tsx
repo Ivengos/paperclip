@@ -429,7 +429,7 @@ export function FeedCard({
   const verb = formatVerb(event.action, details, isPinned ? "pinned" : "chronological");
   const iconSpec = getIconSpec(event, details, isActive);
 
-  const mutedTextBase = isMuted ? "text-muted-foreground/70" : "text-[#959596]";
+  const mutedTextBase = isMuted ? "text-muted-foreground/70" : "text-[var(--paperclip-activity-muted)]";
   const mutedTextHover = isMuted ? "" : "group-hover:text-white";
 
   const card = (
